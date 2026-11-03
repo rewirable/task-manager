@@ -5,10 +5,12 @@ choice = menu()
 match choice:
     case 1:
         print("Add Task")
-        add_task()
+        task_name = input("Enter task name: ")
+        add_task(task_name)
     case 2:
         print("Show Tasks")
-        show_task()
+        task_name = input("Enter task name: ")
+        show_task(task_name)
     case 3:
         print("Delete Task")
         delete_task()
