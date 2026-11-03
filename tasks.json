@@ -1,12 +1,5 @@
-[
-    {
-        "id": 1,
-        "name": "test",
-        "completed": false
-    },
-    {
-        "id": 2,
-        "name": "test",
-        "completed": false
-    }
-]
+{
+    "id": 7,
+    "name": "brudas",
+    "completed": true
+}

@@ -42,4 +42,31 @@ def reading(task_name):
     return None
 
 
-save("test")
+def delete(task_id: int):
+    try:
+        with open("./tasks.json", "r") as f:
+            lines = json.load(f)
+        tasks = []
+        with open("./tasks.json", "w") as f:
+            for task in lines:
+                    if task["id"] != task_id:
+                        tasks.append(task)
+            json.dump(tasks, f, indent=4)
+    except FileNotFoundError:
+        print("file doesnt exist")
+    return print("Task", task_id,"removed")
+
+def complete(task_name):
+    try:
+        table = []
+        with open("./tasks.json", "r") as f:
+            whole = json.load(f)
+            for line in whole:
+                table.append(line)
+                if line["name"] == task_name and line["completed"] == False:
+                    line["completed"] = True
+        with open("./tasks.json", "w") as f:
+            json.dump(line, f, indent=4)
+    except FileNotFoundError:
+        print("file doesnt exist")
+    return print("Task ", task_name, "completed!")
