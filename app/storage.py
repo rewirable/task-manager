@@ -1,8 +1,8 @@
 #saving and reading to json
 import json
 def save(task_name):
-    current_id = None
-    biggest_id = 0
+    current_id: int = None
+    biggest_id: int = 0
 
     try:
         with open("./tasks.json", "r") as f:
@@ -13,9 +13,9 @@ def save(task_name):
             current_id = biggest_id + 1
     except FileNotFoundError:
         print("file doesnt exist")
-        whole = []
+        whole: list[str] = []
 
-    taskk = {
+    taskk: dict[str, int | str | bool] = {
         "id": current_id,
         "name": task_name,
         "completed": False
@@ -46,7 +46,7 @@ def delete(task_id: int):
     try:
         with open("./tasks.json", "r") as f:
             lines = json.load(f)
-        tasks = []
+        tasks: list[str] = []
         with open("./tasks.json", "w") as f:
             for task in lines:
                     if task["id"] != task_id:
@@ -58,7 +58,7 @@ def delete(task_id: int):
 
 def complete(task_name):
     try:
-        table = []
+        table: list[str] = []
         with open("./tasks.json", "r") as f:
             whole = json.load(f)
             for line in whole:
