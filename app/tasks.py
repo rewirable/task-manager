@@ -1,4 +1,4 @@
-from storage import save, reading, delete, complete
+from app.storage import save, reading, delete, complete
 
 def add_task(task_name):
     save(task_name)
