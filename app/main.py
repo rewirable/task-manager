@@ -14,7 +14,7 @@ def start():
             show_task(task_name2)
         case 3:
             print("Delete Task")
-            task_id = input("Enter task id to remove: ")
+            task_id = int(input("Enter task id to remove: "))
             delete_task(task_id)
         case 4:
             print("Complete Task")

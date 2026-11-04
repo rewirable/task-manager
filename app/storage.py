@@ -66,7 +66,7 @@ def complete(task_name):
                 if line["name"] == task_name and line["completed"] == False:
                     line["completed"] = True
         with open("./tasks.json", "w") as f:
-            json.dump(line, f, indent=4)
+            json.dump(table, f, indent=4)
     except FileNotFoundError:
         print("file doesnt exist")
     return print("Task ", task_name, "completed!")
