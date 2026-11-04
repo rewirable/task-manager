@@ -1,33 +1,43 @@
 #saving and reading to json
 import json
 def save(task_name):
-    current_id: int = None
-    biggest_id: int = 0
+    exists = False
+    with open("./tasks.json", "r") as f:
+        everything = json.load(f)
+    for find_task in everything:
+        if find_task["name"] == task_name:
+            print("Task already exists")
+            exists = True
+            break
+        break
+    if exists != True:
+        current_id: int = None
+        biggest_id: int = 0
 
-    try:
-        with open("./tasks.json", "r") as f:
-            whole = json.load(f)
-            for task in whole:
-                    if task["id"] > biggest_id:
-                        biggest_id = task["id"]
-            current_id = biggest_id + 1
-    except FileNotFoundError:
-        print("file doesnt exist")
-        whole: list[str] = []
+        try:
+            with open("./tasks.json", "r") as f:
+                whole = json.load(f)
+                for task in whole:
+                        if task["id"] > biggest_id:
+                            biggest_id = task["id"]
+                current_id = biggest_id + 1
+        except FileNotFoundError:
+            print("file doesnt exist")
+            whole: list[str] = []
 
-    taskk: dict[str, int | str | bool] = {
-        "id": current_id,
-        "name": task_name,
-        "completed": False
-    }
-    
-    try:
-        whole.append(taskk)
-        with open("./tasks.json", "w") as f:
-            json.dump(whole, f, indent=4)
+        taskk: dict[str, int | str | bool] = {
+            "id": current_id,
+            "name": task_name,
+            "completed": False
+        }
+        
+        try:
+            whole.append(taskk)
+            with open("./tasks.json", "w") as f:
+                json.dump(whole, f, indent=4)
 
-    except FileNotFoundError:
-        print("file doesnt exist")
+        except FileNotFoundError:
+            print("file doesnt exist")
 
 
 def reading(task_name):
@@ -36,11 +46,10 @@ def reading(task_name):
             whole = json.load(f)
             for task in whole:
                 if task["name"] == task_name:
-                    return task
+                    return print("id: ", task["id"], " | name: ", task["name"], " | completed: ", task["completed"])
     except FileNotFoundError:
         print("file doesnt exist")
     return None
-
 
 def delete(task_id: int):
     try:

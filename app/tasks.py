@@ -7,7 +7,7 @@ def delete_task(task_id):
     return delete(task_id)
 
 def show_task(task_name):
-    return print(reading(task_name))
+    return reading(task_name)
 
 def complete_task(task_name):
     return complete(task_name)

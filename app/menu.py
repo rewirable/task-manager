@@ -5,4 +5,5 @@ def menu():
     print("4 - Complete Task")
     print("5 - Exit")
     choice = int(input("Choose an option: "))
+    
     return choice
